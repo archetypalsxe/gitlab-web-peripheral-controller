@@ -9,6 +9,7 @@
     header('Pragma: public');
     header('Content-Length: ' . filesize($fileName));
     readfile($fileName);
+    unlink($fileName);
     exit;
 
 ?>
