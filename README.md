@@ -3,6 +3,7 @@
 Primary focus is to make a web interface for sharing the functionality of a scanner that is attached to the server through a web interface
 
 ## Requirements
+
 ### Scanning
 * `scanimage`
 * `tiff2pdf`
@@ -13,6 +14,7 @@ Primary focus is to make a web interface for sharing the functionality of a scan
   * `chmod +x bash/scanAndConvert.sh`
   * Either add the bash to your PATH, or move it into a path
     * `sudo cp bash/scanAndConvert.sh /usr/bin/`
+
 ### Web Interface
 * PHP
 * Apache/web server
