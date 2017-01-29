@@ -1,3 +1,5 @@
 Security
+    Automatically run the initialize if not initialized
+    Create SQLITE files/tables
 Interface
 Ability to print?
