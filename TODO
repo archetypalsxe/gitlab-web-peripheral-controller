@@ -1,7 +1,7 @@
-Get composer fully solidified
-Remove testing.php
 Security
-    Automatically run the initialize if not initialized
-    Create SQLITE files/tables
+    Create SQLITE files/tables to accept login parameters from AccountKit
+Integration of AccountKit
+Remove testing.php
+Automatically run the SQL initialize if not initialized
 Interface
 Ability to print?
