@@ -14,4 +14,4 @@ while getopts l: optName
         esac
     done
 
-sqlite3 $LOCATION < users.sql
+sqlite3 $LOCATION < sql/users.sql
