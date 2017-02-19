@@ -1,7 +1,9 @@
 Security
-    Create SQLITE files/tables to accept login parameters from AccountKit
-Integration of AccountKit
-Remove testing.php
+    When user logs in, query to see if user is found in database
+        If not, add user
+            Get user name
+    Mandate user is logged in
+    Give options based on permissions
 Automatically run the SQL initialize if not initialized
 Interface
 Ability to print?

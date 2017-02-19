@@ -12,7 +12,7 @@ CREATE TABLE userTypes (
 CREATE TABLE users(
     userId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     facebookId INT(50) NOT NULL,
-    accessToken VARCHAR(100) NOT NULL
+    name VARCHAR(100) NOT NULL
 );
 
 /** Important that the newUser is userType 1 **/
