@@ -1,9 +1,13 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require_once( __DIR__ . '/../vendor/autoload.php');
 
-$accountKit = new \AccountKit\Controller();
-$user = $accountKit->getUserInformation($_POST['code']);
+if(!empty($_POST['code'])) {
+    $accountKit = new \AccountKit\Controller();
+    $user = $accountKit->getUserInformation($_POST['code']);
+}
+
+$databaseConnection = new \Database\Connection();
 
 if(empty($user)) {
     die;

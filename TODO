@@ -1,4 +1,3 @@
-Autoloader
 Create connection to database
 Security
     When user logs in, query to see if user is found in database
