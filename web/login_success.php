@@ -7,7 +7,11 @@ if(!empty($_POST['code'])) {
     $user = $accountKit->getUserInformation($_POST['code']);
 }
 
+// @TODO Move this some place better
 $databaseConnection = new \Database\Connection();
+foreach($databaseConnection->query("SELECT * FROM UserTypes") as $userType) {
+    var_dump($userType);
+}
 
 if(empty($user)) {
     die;

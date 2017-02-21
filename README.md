@@ -9,7 +9,7 @@ Primary focus is to make a web interface for sharing the functionality of a scan
   * Composer
 * Apache/web server
 * `sqlite3`
-* `php5-sqlite`
+* `php5-sqlite` or `php-sqlite`
   * Some method of being able to connect to a SQLite database from within PHP
 * `scanimage`
 * `tiff2pdf`
@@ -28,7 +28,8 @@ Primary focus is to make a web interface for sharing the functionality of a scan
 * File `sql/initialize.sh` needs to be executable as well
   * `chmod +x sql/initialize.sh`
 * Logged in as root, or a user with appropriate permissions to create files inside of the sql directory....
-  * Run `./initialize.sh` to get the database setup
+  * Run `sql/initialize.sh` to get the database setup
+  * If the database location was changed, update this in lib/settings.php
 
 ### Security
 * Database security

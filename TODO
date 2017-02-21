@@ -1,4 +1,5 @@
 Create connection to database
+    Move code for querying into useable place
 Security
     When user logs in, query to see if user is found in database
         If not, add user
