@@ -7,7 +7,7 @@ use \PDO;
 /**
  * Class for maintaining the connection to the database
  */
-class Connection
+abstract class Connection
 {
     /**
      * The actual connection to the database
@@ -22,7 +22,7 @@ class Connection
      * @param string $query
      * @return PDOStatement
      */
-    public function query($query)
+    protected function query($query)
     {
         $this->establishConnection();
         return self::$connection->query($query);
@@ -37,7 +37,9 @@ class Connection
     protected function establishConnection()
     {
         if(!(self::$connection instanceof PDO)) {
-            self::$connection = new PDO('sqlite:../'. DATABASE_LOCATION);
+            self::$connection = new PDO(
+                'sqlite:'. BASE_DIR . DATABASE_LOCATION
+            );
         }
     }
 }
