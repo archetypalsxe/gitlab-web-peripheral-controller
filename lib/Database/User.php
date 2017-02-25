@@ -21,6 +21,6 @@ class User extends DatabaseConnection
         $result = $this->query(
             "SELECT * FROM Users WHERE userId = {$userId} LIMIT 1"
         );
-        var_dump($result);
+        return $this->fetchResults($result);
     }
 }

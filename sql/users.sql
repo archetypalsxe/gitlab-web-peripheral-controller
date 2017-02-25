@@ -11,6 +11,7 @@ CREATE TABLE userTypes (
 
 CREATE TABLE users(
     userId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    userTypeId INT(50) NOT NULL,
     facebookId INT(50) NOT NULL,
     name VARCHAR(100) NOT NULL
 );

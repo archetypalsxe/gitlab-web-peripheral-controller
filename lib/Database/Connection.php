@@ -2,13 +2,19 @@
 
 namespace Database;
 
+use \Database\HelperInterface as DatabaseHelperInterface;
+use \Database\HelperTrait as DatabaseHelperTrait;
 use \PDO;
+use \PDOStatement;
 
 /**
  * Class for maintaining the connection to the database
  */
-abstract class Connection
+abstract class Connection implements DatabaseHelperInterface
 {
+
+    use DatabaseHelperTrait;
+
     /**
      * The actual connection to the database
      *
