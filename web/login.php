@@ -1,7 +1,4 @@
 <?php
-session_start();
-unset($_SESSION['userId']);
-unset($_SESSION['accessToken']);
 require __DIR__ . '/../vendor/autoload.php';
 ?>
 
