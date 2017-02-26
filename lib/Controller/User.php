@@ -41,7 +41,8 @@ class User
     public function validateAccessToken()
     {
         $connection = new AccountKitConnection();
-        $user = $connection->getUserInformation($_SESSION['accessToken']);
+        $user = $connection->revalidateToken($_SESSION['accessToken']);
+        var_dump($user);
     }
 
     /**

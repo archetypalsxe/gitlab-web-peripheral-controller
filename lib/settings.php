@@ -5,7 +5,8 @@ if(stripos($_SERVER['HTTP_HOST'], "localhost") !== FALSE || DEVELOP) {
 }
 
 // @TODO Have this be overriden automatically
-const BASE_DIR = "/srv/http/";
+// @TODO Make this better
+const BASE_DIR = "/var/www/html/";
 const DATABASE_LOCATION = 'default.db';
 
 session_start();
