@@ -1,4 +1,3 @@
-Need to add ability to revalidate access token in AccountKit library
 Create connection to database
     Move code for querying into useable place
     Add new users to database

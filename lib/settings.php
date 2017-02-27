@@ -11,8 +11,15 @@ session_start();
 if(strpos($_SERVER['PHP_SELF'], "login.php") !== FALSE) {
     unset($_SESSION['userId']);
     unset($_SESSION['accessToken']);
-}
-if(!empty($_SESSION['userId']) || !empty($_SESSION['accessToken'])) {
-    $userController = new \Controller\User();
-    $userController->validateAccessToken();
+} else {
+    if(empty($_SESSION['userId']) || empty($_SESSION['accessToken'])) {
+        header('Location:login.php');
+    } else {
+        try {
+            $userController = new \Controller\User();
+            $user = $userController->validateAccessToken();
+        } catch (\Exception $e) {
+            header('Location:login.php');
+        }
+    }
 }

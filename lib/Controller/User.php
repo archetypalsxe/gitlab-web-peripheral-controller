@@ -42,7 +42,7 @@ class User
     {
         $connection = new AccountKitConnection();
         $user = $connection->revalidateToken($_SESSION['accessToken']);
-        var_dump($user);
+        return $user;
     }
 
     /**
