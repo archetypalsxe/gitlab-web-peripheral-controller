@@ -26,12 +26,16 @@ abstract class Connection implements DatabaseHelperInterface
      * Queries the database based on the provided query string
      *
      * @param string $query
+     * @param string[] $parameters
      * @return PDOStatement
      */
-    protected function query($query)
+    protected function query($query, $parameters)
     {
         $this->establishConnection();
-        return self::$connection->query($query);
+        $statement = self::$connection->prepare($query);
+        if($statement) {
+            return $statement->execute($parameters);
+        }
     }
 
     /**
@@ -44,8 +48,15 @@ abstract class Connection implements DatabaseHelperInterface
     {
         if(!(self::$connection instanceof PDO)) {
             self::$connection = new PDO(
-                'sqlite:'. BASE_DIR . DATABASE_LOCATION
+                //'sqlite:'. BASE_DIR . DATABASE_LOCATION
+                'sqlite:/tmp/default.db'
             );
+            if (SHOW_DEBUG) {
+                self::$connection->setAttribute(
+                    PDO::ATTR_ERRMODE,
+                    PDO::ERRMODE_EXCEPTION
+                );
+            }
         }
     }
 }

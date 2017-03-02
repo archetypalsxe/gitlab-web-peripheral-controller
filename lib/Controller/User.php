@@ -5,6 +5,7 @@ namespace Controller;
 use \AccountKit\Controller as AccountKitConnection;
 use \AccountKit\Models\User as AccountKitUserModel;
 use \Database\User as UserDatabase;
+use \Exception;
 
 /**
  * Class for managing and controlling users
@@ -32,6 +33,26 @@ class User
         }
 
         $this->getUserFromAccountKitModel($user);
+    }
+
+    /**
+     * Save the new user that was provided through the form
+     *
+     * @param string[] $parameters
+     * @return bool Whether we saved the name or not
+     * @throws Exception
+     */
+    public function saveNewUser($parameters)
+    {
+        $userId = $_SESSION['userId'];
+        if(empty($userId)) {
+            throw new Exception("User does not have a valid user ID");
+        }
+        if(empty($parameters['name'])) {
+            throw new Exception("User does not have a valid name");
+        }
+        $connection = new UserDatabase();
+        return $connection->saveNewUser($userId, $parameters['name']);
     }
 
     /**

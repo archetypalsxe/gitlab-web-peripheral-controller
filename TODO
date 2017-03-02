@@ -1,3 +1,4 @@
+Figure out issues with database location and not being able to save
 Create connection to database
     Move code for querying into useable place
     Add new users to database
@@ -7,6 +8,7 @@ Security
             Get user name
     Mandate user is logged in
     Give options based on permissions
+Change userId to facebookId
 Automatically run the SQL initialize if not initialized
 Interface
 Ability to print?
