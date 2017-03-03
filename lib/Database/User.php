@@ -19,10 +19,12 @@ class User extends DatabaseConnection
     {
         $userId = (int)$userId;
         $result = $this->query(
-            "SELECT * FROM Users WHERE userId = :userId LIMIT 1",
+            "SELECT * FROM users WHERE userId = :userId LIMIT 1",
             [':userId' => $userId]
         );
-        return $this->fetchResults($result);
+        if($result) {
+            return $this->fetchResults($result);
+        }
     }
 
     /**
@@ -35,7 +37,7 @@ class User extends DatabaseConnection
     public function saveNewUser($userId, $name)
     {
         $result = $this->query(
-            "INSERT INTO Users(facebookId, name) VALUES (:userId, :name)",
+            "INSERT INTO users(facebookId, name) VALUES (:userId, :name)",
             [':userId' => (int)$userId, ':name' => (string)$name]
         );
         var_dump(self::$connection->errorInfo());

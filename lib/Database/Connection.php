@@ -34,7 +34,9 @@ abstract class Connection implements DatabaseHelperInterface
         $this->establishConnection();
         $statement = self::$connection->prepare($query);
         if($statement) {
-            return $statement->execute($parameters);
+            if($statement->execute($parameters)) {
+                return $statement;
+            }
         }
     }
 
@@ -47,9 +49,9 @@ abstract class Connection implements DatabaseHelperInterface
     protected function establishConnection()
     {
         if(!(self::$connection instanceof PDO)) {
+            $filePath = BASE_DIR . DATABASE_LOCATION;
             self::$connection = new PDO(
-                //'sqlite:'. BASE_DIR . DATABASE_LOCATION
-                'sqlite:/tmp/default.db'
+                'sqlite:'. BASE_DIR . DATABASE_LOCATION
             );
             if (SHOW_DEBUG) {
                 self::$connection->setAttribute(
