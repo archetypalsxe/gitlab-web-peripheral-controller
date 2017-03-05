@@ -1,3 +1,5 @@
+Appears that it always uses the same userId
+    Perhaps because it is in dev mode????
 Figure out issues with database location and not being able to save
     In Fedora
     Works in Arch:
