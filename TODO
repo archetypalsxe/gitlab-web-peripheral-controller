@@ -4,7 +4,7 @@ Figure out issues with database location and not being able to save
         750 http users srv
         750 http users http
         750 http users default.db
-Redirect if the user cannot scan on the scan page
+Ready for testing in "production"
 Unique constraint on Facebook ID in users table
 Index on Facebook ID in users table
 Create connection to database

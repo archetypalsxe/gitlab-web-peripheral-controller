@@ -1,5 +1,12 @@
 <?php
 require_once( __DIR__ . '/../vendor/autoload.php');
+$userController = new \Controller\User();
+/**
+ * @TODO This probably shouldn't be done here....
+ */
+if(!$userController->canUserScan()) {
+    header('Location:login.php');
+}
 ?>
 
 <head>

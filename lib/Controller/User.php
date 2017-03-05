@@ -67,6 +67,30 @@ class User
     }
 
     /**
+     * Checks to see whether or not the logged in user can scan
+     *
+     * @return bool
+     */
+    public function canUserScan()
+    {
+        $userPermissions = $this->getUserPermissions();
+        return
+            !empty($canScan = $userPermissions[UserDatabase::CAN_SCAN]) &&
+            $canScan;
+    }
+
+    /**
+     * Returns what the logged in user is able to do
+     *
+     * @return string[]
+     */
+    protected function getUserPermissions()
+    {
+        $database = new UserDatabase();
+        return $database->getUserPermissions($_SESSION['userId']);
+    }
+
+    /**
      * Takes in an AccountKit user model. If the user is an existing user,
      * retrieves the user model for it, if it's a new user, creates a user
      * model

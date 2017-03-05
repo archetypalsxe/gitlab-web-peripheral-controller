@@ -3,12 +3,18 @@
 namespace Database;
 
 use \Database\Connection as DatabaseConnection;
+use \Exception;
 
 /**
  * Database controller for the table for users
  */
 class User extends DatabaseConnection
 {
+    const CAN_MODIFY_USERS = "canModifiyUsers";
+    const CAN_SCAN = "canScan";
+    const CAN_PRINT = "canPrint";
+
+
     /**
      * Query the database for a provided user and return the results
      *
@@ -36,9 +42,33 @@ class User extends DatabaseConnection
     public function saveNewUser($facebookId, $name)
     {
         $result = $this->query(
-            "INSERT INTO users(facebookId, name) VALUES (:userId, :name)",
-            [':userId' => (int)$facebookId, ':name' => (string)$name]
+            "INSERT INTO users(facebookId, name) VALUES (:facebookId, :name)",
+            [':facebookId' => (int)$facebookId, ':name' => (string)$name]
         );
         return $result;
+    }
+
+    /**
+     * Get which actions the user is allowed to perform
+     *
+     * @return string[]
+     */
+    public function getUserPermissions($userId)
+    {
+        if(empty($userId) || !is_numeric($userId)) {
+            throw new Exception("Invalid user ID provided");
+        }
+        $result = $this->query(
+            "SELECT canModifyUsers, canScan, canPrint
+            FROM users INNER JOIN userTypes USING (userTypeId)
+            WHERE userId = :userId LIMIT 1",
+            ['userId' => (int)$userId]
+        );
+        if($result) {
+            $rawData = $this->fetchResults($result);
+            // We should only have 1 because of the limit
+            return array_pop($rawData);
+        }
+        return [];
     }
 }
