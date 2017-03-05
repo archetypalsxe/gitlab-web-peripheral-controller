@@ -19,7 +19,7 @@ class User extends DatabaseConnection
     {
         $userId = (int)$userId;
         $result = $this->query(
-            "SELECT * FROM users WHERE userId = :userId LIMIT 1",
+            "SELECT * FROM users WHERE facebookId = :userId LIMIT 1",
             [':userId' => $userId]
         );
         if($result) {

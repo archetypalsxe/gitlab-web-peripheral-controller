@@ -1,10 +1,12 @@
 Figure out issues with database location and not being able to save
     In Fedora
-    drwxr-xr-x USERNAME users srv
-    drwxrwxrwx USERNAME users http
-    -rw-r--r-- http http  default.db
-Unique key on Facebook ID
-Key on Facebook ID
+    Works in Arch:
+        750 http users srv
+        750 http users http
+        750 http users default.db
+Change userId to facebookId
+Unique constraint on Facebook ID in users table
+Index on Facebook ID in users table
 Create connection to database
     Move code for querying into useable place
     Add new users to database
@@ -14,7 +16,6 @@ Security
             Get user name
     Mandate user is logged in
     Give options based on permissions
-Change userId to facebookId
 Store both email and phone number
     Combine facebook IDs that are matching
 Automatically run the SQL initialize if not initialized
