@@ -12,15 +12,14 @@ class User extends DatabaseConnection
     /**
      * Query the database for a provided user and return the results
      *
-     * @param int $userId
+     * @param int $facebookId
      * @return string[] @TODO Return a user model
      */
-    public function getUserData($userId)
+    public function getUserData($facebookId)
     {
-        $userId = (int)$userId;
         $result = $this->query(
-            "SELECT * FROM users WHERE facebookId = :userId LIMIT 1",
-            [':userId' => $userId]
+            "SELECT * FROM users WHERE facebookId = :facebookId LIMIT 1",
+            [':facebookId' => (int)$facebookId]
         );
         if($result) {
             return $this->fetchResults($result);
@@ -30,15 +29,15 @@ class User extends DatabaseConnection
     /**
      * Save a new user in the database
      *
-     * @param int $userId
+     * @param int $facebookId
      * @param string $name
      * @return bool Whether or not it was successful
      */
-    public function saveNewUser($userId, $name)
+    public function saveNewUser($facebookId, $name)
     {
         $result = $this->query(
             "INSERT INTO users(facebookId, name) VALUES (:userId, :name)",
-            [':userId' => (int)$userId, ':name' => (string)$name]
+            [':userId' => (int)$facebookId, ':name' => (string)$name]
         );
         return $result;
     }

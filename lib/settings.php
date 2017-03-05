@@ -15,11 +15,18 @@ define("BASE_DIR", getcwd()."/../");
 define("DATABASE_LOCATION", "default.db");
 
 session_start();
-if(strpos($_SERVER['PHP_SELF'], "login.php") !== FALSE) {
+if(strpos($_SERVER['PHP_SELF'], "login") !== FALSE) {
     unset($_SESSION['userId']);
+    unset($_SESSION['facebookId']);
     unset($_SESSION['accessToken']);
 } else {
-    if(empty($_SESSION['userId']) || empty($_SESSION['accessToken'])) {
+    if(
+        (
+            empty($_SESSION['userId']) &&
+            empty($_SESSION['facebookId'])
+        ) ||
+        empty($_SESSION['accessToken'])
+    ) {
         header('Location:login.php');
     } else {
         try {

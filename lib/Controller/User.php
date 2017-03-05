@@ -44,15 +44,15 @@ class User
      */
     public function saveNewUser($parameters)
     {
-        $userId = $_SESSION['userId'];
-        if(empty($userId)) {
+        $facebookId = $_SESSION['facebookId'];
+        if(empty($facebookId)) {
             throw new Exception("User does not have a valid user ID");
         }
         if(empty($parameters['name'])) {
             throw new Exception("User does not have a valid name");
         }
         $connection = new UserDatabase();
-        return $connection->saveNewUser($userId, $parameters['name']);
+        return $connection->saveNewUser($facebookId, $parameters['name']);
     }
 
     /**
@@ -78,6 +78,8 @@ class User
     {
         $database = new UserDatabase();
         $data = $database->getUserData($user->getUserId());
+        $_SESSION['facebookId'] = $user->getUserId();
+        $_SESSION['accessToken'] = $user->getAccessToken();
         if(empty($data)) {
             $this->requestUsersName($user);
         } else {
@@ -92,8 +94,6 @@ class User
      */
     protected function requestUsersName(AccountKitUserModel $user)
     {
-        $_SESSION['userId'] = $user->getUserId();
-        $_SESSION['accessToken'] = $user->getAccessToken();
         header('Location:getUserName.php');
     }
 
@@ -118,5 +118,7 @@ class User
      */
     protected function updateUserLogin(AccountKitUserModel $user, $data)
     {
+        $_SESSION['userId'] = $data[0]['userId'];
+        header('Location:index.php');
     }
 }
