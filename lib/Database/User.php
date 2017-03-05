@@ -40,7 +40,6 @@ class User extends DatabaseConnection
             "INSERT INTO users(facebookId, name) VALUES (:userId, :name)",
             [':userId' => (int)$userId, ':name' => (string)$name]
         );
-        var_dump(self::$connection->errorInfo());
         return $result;
     }
 }

@@ -1,4 +1,10 @@
 Figure out issues with database location and not being able to save
+    In Fedora
+    drwxr-xr-x USERNAME users srv
+    drwxrwxrwx USERNAME users http
+    -rw-r--r-- http http  default.db
+Unique key on Facebook ID
+Key on Facebook ID
 Create connection to database
     Move code for querying into useable place
     Add new users to database
@@ -9,6 +15,9 @@ Security
     Mandate user is logged in
     Give options based on permissions
 Change userId to facebookId
+Store both email and phone number
+    Combine facebook IDs that are matching
 Automatically run the SQL initialize if not initialized
 Interface
 Ability to print?
+Add ability to login using Facebook
