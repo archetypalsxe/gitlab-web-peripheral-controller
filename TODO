@@ -1,11 +1,6 @@
 Appears that it always uses the same userId
+    Does work in Fedora... need to add logging
     Perhaps because it is in dev mode????
-Figure out issues with database location and not being able to save
-    In Fedora
-    Works in Arch:
-        750 http users srv
-        750 http users http
-        750 http users default.db
 Ready for testing in "production"
     Remove access to web-peripheral/
     Add redirect rules

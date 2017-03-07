@@ -15,6 +15,8 @@ Primary focus is to make a web interface for sharing the functionality of a scan
 * `tiff2pdf`
 
 ### Setup
+* Ran into issues when trying to run on Fedora with SE Linux installed
+  * Recommend disabling or making sure it's set up correctly
 * Use composer
   * `composer install` or
   * `php composer.phar install`
