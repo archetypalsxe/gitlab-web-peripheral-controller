@@ -1,6 +1,5 @@
 Appears that it always uses the same userId
-    Does work in Fedora... need to add logging
-    Perhaps because it is in dev mode????
+    Does work in Fedora & Arch Linux... need to add logging
 Ready for testing in "production"
     Remove access to web-peripheral/
     Add redirect rules
