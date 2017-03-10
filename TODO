@@ -1,8 +1,6 @@
-Appears that it always uses the same userId
-    Does work in Fedora & Arch Linux... need to add logging
-    Logging has been added to the production server
-        Happens even if you change browsers, probably not related to session not
-            being cleared?
+Make sure that everything is working in production
+Redirect after getting user name
+Die after redirecting
 Ready for testing in "production"
     Remove access to web-peripheral/
     Add redirect rules

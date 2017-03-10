@@ -51,18 +51,19 @@ class User extends DatabaseConnection
     /**
      * Get which actions the user is allowed to perform
      *
+     * @param string $userId
      * @return string[]
      */
     public function getUserPermissions($userId)
     {
-        if(empty($userId) || !is_numeric($userId)) {
+        if(empty($userId)) {
             throw new Exception("Invalid user ID provided");
         }
         $result = $this->query(
             "SELECT canModifyUsers, canScan, canPrint
             FROM users INNER JOIN userTypes USING (userTypeId)
             WHERE userId = :userId LIMIT 1",
-            ['userId' => (int)$userId]
+            ['userId' => $userId]
         );
         if($result) {
             $rawData = $this->fetchResults($result);
