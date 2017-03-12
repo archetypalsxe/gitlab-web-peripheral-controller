@@ -25,7 +25,7 @@ class User extends DatabaseConnection
     {
         $result = $this->query(
             "SELECT * FROM users WHERE facebookId = :facebookId LIMIT 1",
-            [':facebookId' => (int)$facebookId]
+            [':facebookId' => $facebookId]
         );
         if($result) {
             return $this->fetchResults($result);
@@ -43,7 +43,7 @@ class User extends DatabaseConnection
     {
         $result = $this->query(
             "INSERT INTO users(facebookId, name) VALUES (:facebookId, :name)",
-            [':facebookId' => (int)$facebookId, ':name' => (string)$name]
+            [':facebookId' => $facebookId, ':name' => (string)$name]
         );
         return $result;
     }
