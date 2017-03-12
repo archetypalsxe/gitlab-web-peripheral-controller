@@ -1,5 +1,5 @@
-Make sure that everything is working in production
 Redirect after getting user name
+    If going directly to index.php after getting user name, 500 server error
 Die after redirecting
 Ready for testing in "production"
     Remove access to web-peripheral/
