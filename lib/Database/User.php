@@ -41,11 +41,10 @@ class User extends DatabaseConnection
      */
     public function saveNewUser($facebookId, $name)
     {
-        $result = $this->query(
+        return (bool) $this->query(
             "INSERT INTO users(facebookId, name) VALUES (:facebookId, :name)",
             [':facebookId' => $facebookId, ':name' => (string)$name]
         );
-        return $result;
     }
 
     /**

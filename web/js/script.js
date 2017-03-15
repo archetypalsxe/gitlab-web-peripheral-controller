@@ -43,7 +43,11 @@ function sendNameField() {
     })
     .done(function(data) {
         var parsedData = $.parseJSON(data);
-        console.log(parsedData);
+        if(parsedData.saveSuccessful) {
+            window.location = "index.php";
+        } else {
+            window.location = "login.php";
+        }
     });
 }
 
