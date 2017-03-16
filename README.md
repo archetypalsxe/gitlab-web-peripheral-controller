@@ -34,6 +34,7 @@ Primary focus is to make a web interface for sharing the functionality of a scan
   * If the database location was changed, update this in lib/settings.php
 
 ### Security
+* Recommend having the Apache rewrite module activated so users are not able to access where they shouldn't be
 * Database security
   * Either move the database file to a location that is not web accessible (settings.php) or
   * Allow overrides in the Apache config so that the provided .htaccess can prevent access to the database file

@@ -1,10 +1,8 @@
+Redirect rules for other folders
 If going directly to index.php after getting user name, 500 server error
     Notice: Undefined index: userId in /var/www/html/lib/Controller/User.php on line 90
     Fatal error: Uncaught exception 'Exception' with message 'Invalid user ID provided' in /var/www/html/lib/Database/User.php:59 Stack trace: #0 /var/www/html/lib/Controller/User.php(90): Database\User->getUserPermissions(NULL) #1 /var/www/html/lib/Controller/User.php(76): Controller\User->getUserPermissions() #2 /var/www/html/web/index.php(7): Controller\User->canUserScan() #3 {main} thrown in /var/www/html/lib/Database/User.php on line 59
 Die after redirecting
-Ready for testing in "production"
-    Remove access to web-peripheral/
-    Add redirect rules
 Unique constraint on Facebook ID in users table
 Index on Facebook ID in users table
 Create connection to database
