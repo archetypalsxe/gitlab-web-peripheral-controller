@@ -35,6 +35,8 @@ Primary focus is to make a web interface for sharing the functionality of a scan
 
 ### Security
 * Recommend having the Apache rewrite module activated so users are not able to access where they shouldn't be
+  * .htaccessINNER should be used if this is being contained inside of another directory (before web)
+  * Otherwise, .htaccess should be used
 * Database security
   * Either move the database file to a location that is not web accessible (settings.php) or
   * Allow overrides in the Apache config so that the provided .htaccess can prevent access to the database file
