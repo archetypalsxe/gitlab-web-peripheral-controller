@@ -52,7 +52,15 @@ class User
             throw new Exception("User does not have a valid name");
         }
         $connection = new UserDatabase();
-        return $connection->saveNewUser($facebookId, $parameters['name']);
+		if($saveSuccessful =
+			$connection->saveNewUser($facebookId, $parameters['name'])
+		) {
+			$data = $connection->getUserData($facebookId);
+			if(!empty($data)) {
+				$this->updateUserLogin($data);
+			}
+		}
+		return $saveSuccessful;
     }
 
     /**
@@ -105,44 +113,29 @@ class User
         $_SESSION['facebookId'] = $user->getUserId();
         $_SESSION['accessToken'] = $user->getAccessToken();
         if(empty($data)) {
-            $this->requestUsersName($user);
+            $this->requestUsersName();
         } else {
-            $this->updateUserLogin($user, $data);
+            $this->updateUserLogin($data);
+			header('Location:index.php');
         }
     }
 
     /**
      * Redirect the user somewhere so that they can enter their name
-     *
-     * @param AccountKitUserModel $user
      */
-    protected function requestUsersName(AccountKitUserModel $user)
+    protected function requestUsersName($user)
     {
         header('Location:getUserName.php');
     }
 
     /**
-     * Create a new user in the database with the provided model
-     *
-     * @param AccountKitUserModel $user
-     * @return bool Whether or not we were successful
-     * @TODO
-     */
-    protected function createNewUser(AccountKitUserModel $user)
-    {
-        $database = new UserDatabase();
-    }
-
-    /**
      * Update in the database that the user has logged in
      *
-     * @param AccountKitUserModel $user
      * @param string[] $data
      * @TODO
      */
-    protected function updateUserLogin(AccountKitUserModel $user, $data)
+    protected function updateUserLogin($data)
     {
         $_SESSION['userId'] = $data[0]['userId'];
-        header('Location:index.php');
     }
 }

@@ -21,11 +21,8 @@ if(strpos($_SERVER['PHP_SELF'], "login") !== FALSE) {
     unset($_SESSION['accessToken']);
 } else {
     if(
-        (
-            empty($_SESSION['userId']) &&
-            empty($_SESSION['facebookId'])
-        ) ||
-        empty($_SESSION['accessToken'])
+		empty($_SESSION['facebookId']) ||
+		empty($_SESSION['accessToken'])
     ) {
         header('Location:login.php');
     } else {

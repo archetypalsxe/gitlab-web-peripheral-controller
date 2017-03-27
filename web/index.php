@@ -5,7 +5,7 @@ $userController = new \Controller\User();
  * @TODO This probably shouldn't be done here....
  */
 if(!$userController->canUserScan()) {
-    header('Location:login.php');
+    header('Location:login.php?error=insufficientPermission');
 }
 ?>
 
